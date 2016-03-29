@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   def play_next_move
     begin
-      @board = Board.new(params[:board])
+      @board = Board.new(params[:board], true)
     rescue Exception => e
       render json: e.message, status: :bad_request
       return

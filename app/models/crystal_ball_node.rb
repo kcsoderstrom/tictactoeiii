@@ -14,11 +14,11 @@ class CrystalBallNode
 
     if @my_team == @next_team
       return all_possible_next_nodes.all? do |node|
-        node.losing_node?(@my_team)
+        node.losing_node?
       end
     else
       return all_possible_next_nodes.any? do |node|
-        node.losing_node?(@my_team)
+        node.losing_node?
       end
     end
   end
@@ -27,11 +27,11 @@ class CrystalBallNode
     return @my_team == @board.winner if @board.over?
     if @my_team == @next_team
       return all_possible_next_nodes.any? do |node|
-        node.winning_node?(@my_team)
+        node.winning_node?
       end
     else
       return all_possible_next_nodes.all? do |node|
-        node.winning_node?(@my_team)
+        node.winning_node?
       end
     end
   end

@@ -23,13 +23,16 @@ class Board
     false
   end
 
-  def initialize(board_str)
+  def initialize(board_str, validate = false)
     if board_str.kind_of?(Array)
       @rows = board_str
     else
       @rows = Board.parse(board_str)
     end
-    raise Exception.new('Invalid turn') unless is_os_turn
+
+    if validate
+      raise Exception.new('Invalid turn') unless is_os_turn
+    end
   end
 
   def [](x, y)
