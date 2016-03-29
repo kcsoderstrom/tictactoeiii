@@ -12,7 +12,7 @@ class Board
 
   # TODO: Make usable to check for other player's turn too
   # It will involve a little more work to see if the board is full
-  def is_os_turn
+  def is_os_turn?
     counts = @rows.flatten.each_with_object(Hash.new(0)) do |char, hash|
       hash[char] += 1
     end
@@ -31,7 +31,7 @@ class Board
     end
 
     if validate
-      raise Exception.new('Invalid turn') unless is_os_turn
+      raise Exception.new('Invalid turn') unless is_os_turn?
       raise Exception.new('Board was already won') if won?
     end
   end
