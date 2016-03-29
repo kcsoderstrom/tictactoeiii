@@ -40,9 +40,9 @@ class CrystalBallNode
     empty_positions.map do |pos|
       test_board = @board.dup
       test_board[pos[0], pos[1]] = @next_team
-      next_mark = (@next_mover_mark == 'o' ? 'x' : 'o')
+      next_team = (@next_team == 'o' ? 'x' : 'o')
 
-      CrystalBallNode.new(test_board, next_mark, pos)
+      CrystalBallNode.new(test_board, next_team, pos)
     end
   end
 
