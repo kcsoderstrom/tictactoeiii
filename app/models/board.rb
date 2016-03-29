@@ -76,7 +76,7 @@ class Board
   def winner
     [columns, diagonals, rows].each do |arrangement|
       arrangement.each do |cut|
-        if is_all_one_character(cut)
+        if all_one_character?(cut)
           return cut[0] unless cut[0] == ' '
         end
       end
@@ -85,7 +85,7 @@ class Board
     nil
   end
 
-  def is_all_one_character(arr)
+  def all_one_character?(arr)
     return true if arr.uniq == arr[0..0]
   end
 
