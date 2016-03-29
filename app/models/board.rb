@@ -32,6 +32,7 @@ class Board
 
     if validate
       raise Exception.new('Invalid turn') unless is_os_turn
+      raise Exception.new('Board was already won') if won?
     end
   end
 
