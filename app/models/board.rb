@@ -12,13 +12,15 @@ class Board
 
   # TODO: Make usable to check for other player's turn too
   # It will involve a little more work to see if the board is full
-  def is_second_players_turn
+  def is_os_turn
     counts = @rows.flatten.each_with_object(Hash.new(0)) do |char, hash|
       hash[char] += 1
     end
 
     # TODO: Add a config that makes it easy to change who is playing first
     return true if counts['o'] == counts['x']
+    return true if counts['o'] == counts['x'] - 1 and !tied?
+    false
   end
 
   def initialize(board_str)
@@ -27,7 +29,7 @@ class Board
     else
       @rows = Board.parse(board_str)
     end
-    raise Exception.new('Invalid turn') unless is_second_players_turn
+    raise Exception.new('Invalid turn') unless is_os_turn
   end
 
   def [](x, y)
